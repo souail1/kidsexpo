@@ -41,7 +41,7 @@
                     });
                     tpwidget("show");</script>
             </div>
-            <!-- 顶部右侧菜单 -->
+            <!-- 顶部右侧login out菜单 -->
             <ul class="layui-nav top_menu">
                 {{--<li class="layui-nav-item showNotice" id="showNotice" pc>--}}
                     {{--<a href="javascript:;"><i class="layui-icon"></i><cite>系统公告</cite></a>--}}
