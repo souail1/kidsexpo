@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>his-后台管理</title>
+    <title>kidsexpo</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
@@ -18,7 +18,7 @@
     <!-- 顶部 -->
     <div class="layui-header header">
         <div class="layui-main">
-            <a href="#" class="logo">his-后台管理</a>
+            <a href="#" class="logo">kidsexpo admin</a>
             <!-- 显示/隐藏菜单 -->
             <a href="javascript:;" class="hideMenu"><i class="layui-icon">&#xe638;</i></a>
             <!-- 天气信息 -->
