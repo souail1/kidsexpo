@@ -26,10 +26,10 @@
                     <td>mysql版本</td>
                     <td class="dataBase">{{$system_info['mysql_version']}}</td>
                 </tr>
-                <tr>
+                {{--<tr>
                     <td>redis版本</td>
                     <td class="dataBase">{{$system_info['redis_version']}}</td>
-                </tr>
+                </tr>--}}
                 <tr>
                     <td>最大上传限制</td>
                     <td class="maxUpload">{{$system_info['max_upload_size']}}</td>
