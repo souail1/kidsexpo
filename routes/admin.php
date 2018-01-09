@@ -44,8 +44,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
             Route::get('role/{role_id}/rules', 'RuleController@setRules');
             Route::put('role/{role_id}/rules', 'RuleController@storeRules');
         });
-
-            Route::get('articlesList', 'ArticleController@articlesPage');
     });
 
 });

@@ -189,7 +189,6 @@ class AdminService extends BaseService
     public function getSystemInfo() : array
     {
         $mysqlVs = DB::select('SELECT VERSION() AS ver'); // mysql 版本
-       /* $redisInfo = Redis::info();*/
 
         $systemInfo = [
             'url'             => $_SERVER['HTTP_HOST'],   // 域名
@@ -200,7 +199,6 @@ class AdminService extends BaseService
             'server_soft'     => $_SERVER['SERVER_SOFTWARE'], // web运行环境
             'php_version'     => PHP_VERSION,               // php版本
             'mysql_version'   => $mysqlVs[0]->ver,          // mysql版本
-            /*'redis_version'   => $redisInfo['redis_version'],*/ // redis版本
             'max_upload_size' => ini_get('upload_max_filesize') // 上传文件大小
         ];
         return $systemInfo;

@@ -63,7 +63,79 @@
     </div>
     <!-- 左侧导航 -->
     <div class="layui-side">
-        <div class="navBar layui-side-scroll"></div>
+            <div class="navBar layui-side-scroll" style="height: 714px;">
+                <ul class="layui-nav layui-nav-tree">
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="/">
+                            <i class="iconfont icon-computer" data-icon="icon-computer"></i>
+                            <cite>后台首页</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="">
+                            <i class="iconfont icon-text" data-icon="icon-text"></i>
+                            <cite>栏目管理</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="/admin/articel">
+                            <i class="iconfont icon-text" data-icon="icon-text"></i>
+                            <cite>文章列表</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            <i class="layui-icon" data-icon=""></i>
+                            <cite>组件管理</cite>
+                            <span class="layui-nav-more"></span>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" data-url="">
+                                    <i class="layui-icon" data-icon=""></i>
+                                    <cite>友情链接</cite>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="">
+                                    <i class="layui-icon" data-icon=""></i>
+                                    <cite>Banner管理</cite>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="">
+                                    <i class="layui-icon" data-icon=""></i>
+                                    <cite>关注网上预登记</cite>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="">
+                                    <i class="layui-icon" data-icon=""></i>
+                                    <cite>订阅管理</cite>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-url="">
+                                    <i class="layui-icon" data-icon=""></i>
+                                    <cite>同期活动</cite>
+                                </a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="">
+                            <i class="layui-icon" data-icon=""></i>
+                            <cite>幼儿园管理</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="">
+                            <i class="layui-icon" data-icon=""></i>
+                            <cite>单页管理</cite></a>
+                    </li>
+                    <span class="layui-nav-bar" style="top: 112.5px; height: 0px; opacity: 0;"></span>
+                </ul>
+            </div>
     </div>
     <!-- 右侧内容 -->
     <div class="layui-body layui-form">
@@ -90,7 +162,7 @@
     </div>
     <!-- 底部 -->
     <div class="layui-footer footer">
-        <p>copyright @2017 his</p>
+        <p>copyright @2017 souail</p>
     </div>
 </div>
 
