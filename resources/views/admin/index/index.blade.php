@@ -78,7 +78,7 @@
                         </a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;" data-url="/admin/articel">
+                        <a href="javascript:;" data-url="/admin/articel/index">
                             <i class="iconfont icon-text" data-icon="icon-text"></i>
                             <cite>文章列表</cite>
                         </a>
