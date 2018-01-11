@@ -78,7 +78,7 @@
                         </a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;" data-url="/admin/articel/index">
+                        <a href="javascript:;" data-url="/admin/article">
                             <i class="iconfont icon-text" data-icon="icon-text"></i>
                             <cite>文章列表</cite>
                         </a>
@@ -105,7 +105,7 @@
                             <dd>
                                 <a href="javascript:;" data-url="">
                                     <i class="layui-icon" data-icon=""></i>
-                                    <cite>关注网上预登记</cite>
+                                    <cite>观众网上预登记</cite>
                                 </a>
                             </dd>
                             <dd>

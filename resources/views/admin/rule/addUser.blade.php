@@ -2,6 +2,7 @@
 
 @section("content")
 	<form class="layui-form layui-form-pane" style="width:60%;">
+		{{ csrf_field() }}
 		<div class="layui-form-item">
 			<label class="layui-form-label">用户组</label>
 			<div class="layui-input-block">
