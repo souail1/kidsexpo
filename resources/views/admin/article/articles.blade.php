@@ -62,10 +62,11 @@
                 ,layout: ['prev', 'page', 'next']
                 ,limits: [10, 20]
                 ,cols: [[ //表头
-                    {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left', align: 'left'}
+                    {field: 'id', title: 'ID', width:80, sort: true}
                     ,{field: 'title', title: '标题'}
-                    ,{field: 'author', title: '作者'}
                     ,{field: 'cate', title: '分类',templet: '#cate'}
+                    ,{field: 'created_at', title:'创建时间', sort: true}
+                    ,{field: 'updated_at', title:'修改时间', sort: true,}
                     ,{field: 'status', title: '是否发布', width: 80, templet: '#active'}
                     ,{title: '操作', width: 160, toolbar: '#op'}
                 ]]
@@ -110,10 +111,10 @@
                         });
                     });
                 } else if (layEvent == 'edit') {
-                    dialog.open('编辑管理员', '/admin/article/'+data.id+'/edit');
+                    dialog.open('编辑文章', '/admin/article/'+data.id+'/edit');
 
                 } else if (layEvent == 'del') {
-                    dialog.confirm('确认删除改用户么', function () {
+                    dialog.confirm('确认删除', function () {
                         var loadIndex = dialog.load('删除中，请稍候');
                         his.ajax({
                             url: '/admin/article'

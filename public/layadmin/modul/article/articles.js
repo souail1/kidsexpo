@@ -14,9 +14,10 @@ layui.config({base: '/layadmin/modul/common/'}).use(['table', 'dialog', 'his'], 
         ,cols: [[ //表头
             {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left', align: 'left'}
             ,{field: 'title', title: '标题'}
-            ,{field: 'author', title: '作者'}
             ,{field: 'cate_id', title: '分类'}
             ,{field: 'status', title: '是否发布', width: 80, templet: '#active'}
+            ,{field: 'created_at', title:'创建时间'}
+            ,{field: 'updated_at', title:'修改时间'}
             ,{title: '操作', width: 160, toolbar: '#op'}
         ]]
         ,response: {

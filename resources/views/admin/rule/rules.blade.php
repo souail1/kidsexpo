@@ -14,8 +14,8 @@
 		</div>
 	</blockquote>
 	<div class="layui-form links_list">
-	  	<table class="layui-table tree">
-		    <colgroup>
+		<table class="layui-table tree">
+			<colgroup>
 				<col width="100px">
 				<col width="">
 				<col>
@@ -24,20 +24,20 @@
 				<col width="20px">
 				<col width="7%">
 				<col width="">
-		    </colgroup>
-		    <thead>
-				<tr>
-					<th>#</th>
-					<th style="text-align:left;">权限名称</th>
-					<th style="text-align:left;">链接</th>
-					<th style="text-align:left;">控制器@方法</th>
-					<th>是否验证权限</th>
-					<th>是否显示</th>
-					<th>排序</th>
-					<th>操作</th>
-				</tr> 
-		    </thead>
-		    <tbody class="links_content">
+			</colgroup>
+			<thead>
+			<tr>
+				<th>#</th>
+				<th style="text-align:left;">权限名称</th>
+				<th style="text-align:left;">链接</th>
+				<th style="text-align:left;">控制器@方法</th>
+				<th>是否验证权限</th>
+				<th>是否显示</th>
+				<th>排序</th>
+				<th>操作</th>
+			</tr>
+			</thead>
+			<tbody class="links_content">
 			@foreach ($rules as $rule)
 				<tr class="treegrid-{{$rule['id']}} @if($rule['pid']!=0) treegrid-parent-{{$rule['pid']}} @endif">
 					<td>{{ $rule['id'] }}</td>
@@ -77,4 +77,3 @@
 	<script type="text/javascript" src="/layadmin/extra/treegrid/js/jquery.treegrid.js"></script>
 	<script type="text/javascript" src="/layadmin/modul/rule/rules.js"></script>
 @endsection
-

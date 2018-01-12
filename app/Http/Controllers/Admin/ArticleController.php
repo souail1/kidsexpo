@@ -28,7 +28,7 @@ class ArticleController extends Controller
         $offset = ($page - 1) * $limit;
         if ($where) $where = [['title', 'like', $where.'%']];
         $articles = DB::table('articles')
-            ->select('id', 'title', 'author', 'cate', 'status')
+            ->select('id', 'title', 'content', 'cate', 'created_at', 'updated_at','status')
             ->where($where)
             ->offset($offset)
             ->limit($limit)

@@ -72,9 +72,9 @@
                         </a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;" data-url="">
+                        <a href="javascript:;" data-url="/admin/rules">
                             <i class="iconfont icon-text" data-icon="icon-text"></i>
-                            <cite>栏目管理</cite>
+                            <cite>权限管理</cite>
                         </a>
                     </li>
                     <li class="layui-nav-item">

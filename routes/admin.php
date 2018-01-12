@@ -25,14 +25,21 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::patch('article', 'ArticleController@activeArticle');
         Route::delete('article', 'ArticleController@delArticle');
 
-        Route::get('usersList', 'RuleController@adminsPage');
-        Route::get('users', 'RuleController@getAdmins');
-        Route::get('user/create', 'RuleController@addAdmin');
-        Route::post('user', 'RuleController@addAdmin');
-        Route::get('user/{id}/edit', 'RuleController@editAdmin');
-        Route::put('user', 'RuleController@editAdmin');
-        Route::patch('user', 'RuleController@activeAdmin');
-        Route::delete('user', 'RuleController@delAdmin');
+        Route::get('cates', 'CateController@Cates');
+        Route::get('cate/create', 'CateController@addCate');
+        Route::post('cate', 'CateController@addCate');
+        Route::get('cate/{id}/edit', 'CateController@editCate');
+        Route::put('cate', 'CateController@editCate');
+        Route::delete('cate', 'CateController@deleteCate');
+        Route::patch('cate', 'CateController@editCateStatus');
+
+        Route::get('rules', 'RuleController@rules');
+        Route::get('rule/create', 'RuleController@addRule');
+        Route::post('rule', 'RuleController@addRule');
+        Route::get('rule/{id}/edit', 'RuleController@editRule');
+        Route::put('rule', 'RuleController@editRule');
+        Route::delete('rule', 'RuleController@deleteRule');
+        Route::patch('rule', 'RuleController@editRuleStatus');
     });
 
 });
