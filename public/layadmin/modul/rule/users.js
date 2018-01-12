@@ -6,7 +6,7 @@ layui.config({base: '/layadmin/modul/common/'}).use(['table', 'dialog', 'his'], 
 
     table.render({
         elem: '#users'
-        ,url: '/admin/users' //数据接口
+        ,url: '/admin/articles' //数据接口
         ,method: 'get'
         ,page: true //开启分页
         ,limit: 10

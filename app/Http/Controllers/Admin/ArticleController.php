@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Common\Enum\HttpCode;
 use App\Model\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,12 +15,12 @@ class ArticleController extends Controller
 
     }*/
 
-    public function index()
+    public function articlesPage()
     {
-        return view('admin.article.list');
+        return view('admin.article.articles');
     }
     //获取文章数据
-    public function getArticle(Request $request)
+    public function getArticles(Request $request)
     {
         $page =  $request->input('page');
         $limit =  $request->input('limit');
@@ -32,7 +33,7 @@ class ArticleController extends Controller
             ->offset($offset)
             ->limit($limit)
             ->get()->toArray();
-        $count = count($articles);
+        $count = DB::table('articles')->count();
         $res= [
             'count' => $count,
             'data' => $articles
@@ -40,89 +41,64 @@ class ArticleController extends Controller
         return ajaxSuccess($res['data'], $res['count']);
     }
 
-    /**
-     * 创建新文章表单页面
-     *
-     * @return Response
-     */
-    public function create()
+    public function addArticle(Request $request)
     {
-        return view('admin.article.add');
+        if ($request->isMethod('post')) {
+            $this->validate($request, [
+                'title' => 'required',
+            ]);
+            $article = new Article;
+            $article->title = $request->input('title');
+            $article->content = $request->input('content');
+            $article->cate = $request->input('cate');
+            $article->status = $request->input('status');
+            $article->save();
+            if (!$article) return ajaxError('新建失败');
+            return ajaxSuccess([], '', 'success', HttpCode::CREATED);
+        } else {
+            $articles = Article::all();
+            return view('admin.article.addArticle', ['articles' => $articles]);
+        }
     }
 
-    /**
-     * 将新创建的文章存储到存储器
-     *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
+    public function editArticle(Request $request)
     {
-        $this->validate($request,[
-            'title' => 'required',
-        ]);
-        $article = new Article;
-        $article->title = $request->input('title');
-        $article->content = $request->input('content');
-        $article->cate = $request->input('cate');
-        $article->status = $request->input('status');
-        $article->save();
+        if ($request->isMethod('put')) {
+            $this->validate($request, [
+                'title' => 'required'
+            ]);
+            $article = new Article;
+            $article->title = $request->input('title');
+            $article->content = $request->input('content');
+            $article->cate = $request->input('cate');
+            $article->status = $request->input('status');
+            $article->update();
+            if (!$article) return ajaxError('编辑失败');
+            return ajaxSuccess();
+        } else {
+            $articles = Article::select()->find($request->id)->toArray();
+            return view('admin.article.editArticle', ['articles' => $articles]);
+        }
+    }
+
+    public function activeArticle(Request $request)
+    {
+        $re = Article::where('id', $request->id)->update(['status' => $request->status]);
+        if (!$re) return ajaxError('发布失败', HttpCode::BAD_REQUEST);
         return ajaxSuccess();
     }
 
-    /**
-     * 显示指定文章
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
+    public function delArticle(Request $request)
     {
-        //
-    }
-
-    /**
-     * 显示编辑指定文章的表单页面
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        $article = DB::table('articles')
-            ->select('id', 'title', 'author', 'cate', 'status')
-            ->where('id', $id)
-            ->get();
-        return view('admin.article.edit', ['article' => $article]);
-
-    }
-
-    /**
-     * 在存储器中更新指定文章
-     *
-     * @param Request $request
-     * @param int $id
-     * @return Response
-     */
-    public function update(Request $request)
-    {
-        $data = $request->input();
-        $article = new Article();
-        $article->save();
-        return ajaxSuccess();
-
-    }
-
-    /**
-     * 从存储器中移除指定文章
-     *
-     * @param int $id
-     * @return Response
-     */
-    public function destroy(Request $request)
-    {
-        $id = $request->input('id');
-        $article = DB::table('users')->where('id', '=', $id)->delete();
+        $article = Article::find($request->id);
+        if (!$article) {
+            $this->error = '用户不存在';
+            $this->httpCode = HttpCode::GONE;
+            return false;
+        }
+        $article->delete();
+        if (!$article) return ajaxError(getError('删除失败'));
         return ajaxSuccess();
     }
+
 }

@@ -14,11 +14,16 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('main', 'IndexController@main');
         Route::get('user/password/edit', 'IndexController@editPassword');
         Route::put('user/password', 'IndexController@editPassword');
-        Route::resource('article', 'ArticleController');
 
-        Route::get('articlesList', 'ArticleController@getArticle');
-        Route::delete('article', 'ArticleController@destroy');
-
+        //article
+        Route::get('articlesList', 'ArticleController@articlesPage');
+        Route::get('articles', 'ArticleController@getArticles');
+        Route::get('article/create', 'ArticleController@addArticle');
+        Route::post('article', 'ArticleController@addArticle');
+        Route::get('article/{id}/edit', 'ArticleController@editArticle');
+        Route::put('article', 'ArticleController@editArticle');
+        Route::patch('article', 'ArticleController@activeArticle');
+        Route::delete('article', 'ArticleController@delArticle');
 
         Route::get('usersList', 'RuleController@adminsPage');
         Route::get('users', 'RuleController@getAdmins');

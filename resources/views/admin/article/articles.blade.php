@@ -19,7 +19,6 @@
 @endsection
 
 @section("js")
-    <script type="text/javascript" src="/layadmin/modul/rule/users.js"></script>
     <script type="text/html" id="active">
         @{{# if(d.status == 1){ }}
         <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="active">已发布</a>
@@ -56,7 +55,7 @@
                 ,$ = layui.$;
             table.render({
                 elem: '#articles'
-                ,url: '/admin/articlesList' //数据接口
+                ,url: '/admin/articles' //数据接口
                 ,method: 'get'
                 ,page: true //开启分页
                 ,limit: 10
@@ -111,7 +110,7 @@
                         });
                     });
                 } else if (layEvent == 'edit') {
-                    dialog.open('编辑管理员', '/admin/article/'+data.id+'/edit+data.id+');
+                    dialog.open('编辑管理员', '/admin/article/'+data.id+'/edit');
 
                 } else if (layEvent == 'del') {
                     dialog.confirm('确认删除改用户么', function () {
