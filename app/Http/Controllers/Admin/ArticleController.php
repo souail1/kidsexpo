@@ -7,6 +7,9 @@ use App\Model\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Service\AdminService;
+
+
 
 class ArticleController extends Controller
 {
@@ -47,17 +50,12 @@ class ArticleController extends Controller
             $this->validate($request, [
                 'title' => 'required',
             ]);
-            $article = new Article;
-            $article->title = $request->input('title');
-            $article->content = $request->input('content');
-            $article->cate = $request->input('cate');
-            $article->status = $request->input('status');
-            $article->save();
-            if (!$article) return ajaxError('新建失败');
+            $Article = new Article();
+            $re = $Article->addArticle($request->all());
+            if (!$re) return ajaxError($Article->getError(), $Article->getHttpCode());
             return ajaxSuccess([], '', 'success', HttpCode::CREATED);
         } else {
-            $articles = Article::all();
-            return view('admin.article.addArticle', ['articles' => $articles]);
+            return view('admin.article.addArticle');
         }
     }
 

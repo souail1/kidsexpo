@@ -27,9 +27,6 @@ layui.config({base: '/layadmin/modul/common/'}).use(['form', 'dialog', 'his','la
                 parent.location.reload();
             }
         });
-
         return false;
-
     })
-
 })

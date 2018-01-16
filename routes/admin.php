@@ -1,5 +1,8 @@
 <?php
 
+//upload
+Route::post('upload', 'UploadController@upload');
+
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('login', 'LoginController@index');
     Route::post('login', 'LoginController@signIn');
@@ -24,8 +27,16 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::put('article', 'ArticleController@editArticle');
         Route::patch('article', 'ArticleController@activeArticle');
         Route::delete('article', 'ArticleController@delArticle');
+        //banner
+        Route::get('bannersList', 'BannerController@bannersPage');
+        Route::get('banners', 'BannerController@getBanners');
+        Route::get('banner/create', 'BannerController@addBanner');
+        Route::post('banner', 'BannerController@addBanner');
 
-        Route::get('cates', 'CateController@Cates');
+
+
+
+        /*Route::get('cates', 'CateController@Cates');
         Route::get('cate/create', 'CateController@addCate');
         Route::post('cate', 'CateController@addCate');
         Route::get('cate/{id}/edit', 'CateController@editCate');
@@ -39,7 +50,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('rule/{id}/edit', 'RuleController@editRule');
         Route::put('rule', 'RuleController@editRule');
         Route::delete('rule', 'RuleController@deleteRule');
-        Route::patch('rule', 'RuleController@editRuleStatus');
+        Route::patch('rule', 'RuleController@editRuleStatus');*/
     });
 
 });

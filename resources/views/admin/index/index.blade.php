@@ -84,6 +84,12 @@
                         </a>
                     </li>
                     <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="">
+                            <i class="layui-icon" data-icon=""></i>
+                            <cite>幼儿园管理</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
                         <a href="javascript:;">
                             <i class="layui-icon" data-icon=""></i>
                             <cite>组件管理</cite>
@@ -97,7 +103,7 @@
                                 </a>
                             </dd>
                             <dd>
-                                <a href="javascript:;" data-url="">
+                                <a href="javascript:;" data-url="/admin/bannersList">
                                     <i class="layui-icon" data-icon=""></i>
                                     <cite>Banner管理</cite>
                                 </a>
@@ -114,24 +120,7 @@
                                     <cite>订阅管理</cite>
                                 </a>
                             </dd>
-                            <dd>
-                                <a href="javascript:;" data-url="">
-                                    <i class="layui-icon" data-icon=""></i>
-                                    <cite>同期活动</cite>
-                                </a>
-                            </dd>
                         </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;" data-url="">
-                            <i class="layui-icon" data-icon=""></i>
-                            <cite>幼儿园管理</cite>
-                        </a>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;" data-url="">
-                            <i class="layui-icon" data-icon=""></i>
-                            <cite>单页管理</cite></a>
                     </li>
                     <span class="layui-nav-bar" style="top: 112.5px; height: 0px; opacity: 0;"></span>
                 </ul>
