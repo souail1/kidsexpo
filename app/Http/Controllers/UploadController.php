@@ -22,7 +22,12 @@ class UploadController extends Controller {
                 $filename = date('Y-m-d-H-i-s') . '-' . uniqid() . '.' . $ext;
                 // 使用我们新建的uploads本地存储空间（目录）
                 Storage::disk('uploads')->put($filename, file_get_contents($realPath));
-                return $filename;
+                $name = 'uploads/banners/'. $filename;
+                $res = [
+                    'file' => $name
+                ];
+                $res = json_encode($res);
+                return $res;
             }
         }
     }
