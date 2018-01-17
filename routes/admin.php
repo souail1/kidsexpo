@@ -32,6 +32,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('banners', 'BannerController@getBanners');
         Route::get('banner/create', 'BannerController@addBanner');
         Route::post('banner', 'BannerController@addBanner');
+        Route::get('banner/{id}/edit', 'BannerController@editBanner');
+        Route::put('banner', 'BannerController@editBanner');
+        Route::delete('banner', 'BannerController@delBanner');
 
 
 

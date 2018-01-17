@@ -45,8 +45,8 @@
                 ,limits: [10, 20]
                 ,cols: [[ //表头
                     {field: 'id', title: 'ID', width:80, sort: true}
+                    ,{field: 'img', title: '轮播图', width: 150,style:'height:100%;max-width:100%;',templet:'<div><img src="{"></div>'}
                     ,{field: 'title', title: '标题'}
-                    ,{field: 'file', title: '轮播图'}
                     ,{field: 'sort', title: '排序'}
                     ,{field: 'created_at', title:'创建时间', sort: true}
                     ,{field: 'updated_at', title:'修改时间', sort: true}
