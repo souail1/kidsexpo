@@ -27,7 +27,7 @@ class BannerController extends Controller {
         $offset = ($page - 1) * $limit;
         if ($where) $where = [['title', 'like', $where.'%']];
         $articles = DB::table('banners')
-            ->select('id', 'title', 'file', 'sort', 'created_at', 'updated_at')
+            ->select('id', 'title', 'img', 'sort', 'created_at', 'updated_at')
             ->where($where)
             ->offset($offset)
             ->limit($limit)
@@ -56,37 +56,31 @@ class BannerController extends Controller {
         }
     }
 
-    public function editArticle(Request $request)
+    public function editBanner(Request $request)
     {
         if ($request->isMethod('put')) {
-            $this->validate($request, [
-                'title' => 'required'
-            ]);
-            $article = new Article;
-            $article->title = $request->input('title');
-            $article->content = $request->input('content');
-            $article->cate = $request->input('cate');
-            $article->status = $request->input('status');
-            $article->update();
-            if (!$article) return ajaxError('编辑失败');
+            $id = $request->input('id');
+            $banner = new banner();
+            $re = $banner->updateBanner($request->all(), $id);
+            if (!$re) return ajaxError($banner->getError(), $banner->getHttpCode());
             return ajaxSuccess();
         } else {
-            $articles = Article::select()->find($request->id)->toArray();
-            return view('admin.article.editArticle', ['articles' => $articles]);
+            $banners = Banner::select()->find($request->id);
+            return view('admin.banner.editbanner', ['banners' => $banners]);
         }
     }
 
 
-    public function delArticle(Request $request)
+    public function delBanner(Request $request)
     {
-        $article = Article::find($request->id);
-        if (!$article) {
-            $this->error = '用户不存在';
+        $banner = Banner::find($request->id);
+        if (!$banner) {
+            $this->error = '不存在';
             $this->httpCode = HttpCode::GONE;
             return false;
         }
-        $article->delete();
-        if (!$article) return ajaxError(getError('删除失败'));
+        $banner->delete();
+        if (!$banner) return ajaxError(getError('删除失败'));
         return ajaxSuccess();
     }
 

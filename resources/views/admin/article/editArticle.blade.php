@@ -12,20 +12,25 @@
 				</select>
 			</div>
 		</div>
-		<div class="layui-form-item">
+		<div class="layui-form-item" style="margin-top: 50px">
 			<label class="layui-form-label">标题</label>
 			<div class="layui-input-block">
 				<input type="text" class="layui-input" name="title" lay-verify="required" value="{{$articles['title']}}">
 			</div>
 		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">内容</label>
-			<textarea id="content" style="display: none;" value="{{$articles['content']}}"></textarea>
+		<label class="layui-form-label">内容</label>
+		<div class="layui-form-item" style="margin-top: 80px">
+
+			<!-- 编辑器容器 -->
+			<script id="container" name="content" type="text/plain">
+				{!! $articles['content'] !!}
+			</script>
 		</div>
 		<div class="layui-form-item">
 			<input type="radio" name="status" value="1" title="发布"  @if ($articles['status'] == 1) checked @endif>
 			<input type="radio" name="status" value="-1" title="暂不发布"  @if ($articles['status'] == -1) checked @endif>
 		</div>
+		<input type="hidden" name="id" value="{{$articles['id']}}">
 		<div class="layui-form-item">
 			<div class="layui-input-block">
 				<button class="layui-btn" type="button" lay-submit lay-filter="addarticle">立即提交</button>
@@ -36,13 +41,52 @@
 @endsection
 
 @section("js")
-	<script type="text/javascript" src="/layadmin/modul/article/add.js"></script>
+	<!-- 配置文件 -->
+	<script type="text/javascript" src="{{ asset('vendor/ueditor/ueditor.config.js') }}"></script>
+	<!-- 编辑器源码文件 -->
+	<script type="text/javascript" src="{{ asset('vendor/ueditor/ueditor.all.js') }}"></script>
+	<script>
+        window.UEDITOR_CONFIG.serverUrl = '{{ config('ueditor.route.name') }}'
+	</script>
+	<!-- 实例化编辑器 -->
+	<script type="text/javascript">
+        var ue = UE.getEditor('container');
+        ue.ready(function() {
+            ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
+        });
+	</script>
+
+
 	<script>
 
-        /*layui.use('layedit', function(){
-            var layedit = layui.layedit;
-            layedit.build('content'); //建立编辑器
-        });*/
+        layui.config({base: '/layadmin/modul/common/'}).use(['form', 'dialog', 'his'],function(){
+            var form = layui.form,
+                dialog = layui.dialog,
+                $ = layui.jquery,
+                his = layui.his;
+
+            form.on("submit(addarticle)",function(data){
+
+                his.ajax({
+                    url: '/admin/article'
+                    ,type: 'put'
+                    ,data: data.field
+                    ,contentType: 'form'
+                    ,complete: function(){
+                        dialog.close(loadIndex);
+                    }
+                    ,error: function (msg) {
+                        dialog.error(msg);
+                    }
+                    ,success: function (msg, data, meta) {
+                        dialog.msg("文章修改成功！");
+                        dialog.closeAll('iframe');
+                        parent.location.reload();
+                    }
+                });
+                return false;
+            })
+        })
 
 	</script>
 @endsection

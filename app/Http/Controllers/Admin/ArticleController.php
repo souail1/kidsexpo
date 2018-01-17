@@ -62,22 +62,17 @@ class ArticleController extends Controller
     public function editArticle(Request $request)
     {
         if ($request->isMethod('put')) {
-            $this->validate($request, [
-                'title' => 'required'
-            ]);
-            $article = new Article;
-            $article->title = $request->input('title');
-            $article->content = $request->input('content');
-            $article->cate = $request->input('cate');
-            $article->status = $request->input('status');
-            $article->update();
-            if (!$article) return ajaxError('编辑失败');
+            $id = $request->input('id');
+            $article = new article();
+            $re = $article->updateArticle($request->all(), $id);
+            if (!$re) return ajaxError($article->getError(), $article->getHttpCode());
             return ajaxSuccess();
         } else {
-            $articles = Article::select()->find($request->id)->toArray();
+            $articles = Article::select()->find($request->id);
             return view('admin.article.editArticle', ['articles' => $articles]);
         }
     }
+
 
     public function activeArticle(Request $request)
     {

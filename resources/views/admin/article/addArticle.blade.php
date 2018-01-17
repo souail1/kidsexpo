@@ -13,15 +13,17 @@
 				</select>
 			</div>
 		</div>
-		<div class="layui-form-item">
+		<div class="layui-form-item" style="margin-top: 50px">
 			<label class="layui-form-label">标题</label>
 			<div class="layui-input-block">
 				<input type="text" class="layui-input" name="title" lay-verify="required" placeholder="请输入文章标题">
 			</div>
 		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">内容</label>
-			<textarea id="content" style="display: none;"></textarea>
+		<label class="layui-form-label">内容</label>
+		<div class="layui-form-item" style="margin-top: 80px">
+
+			<!-- 编辑器容器 -->
+			<script id="container" name="content" type="text/plain"></script>
 		</div>
 		<div class="layui-form-item">
 			<input type="radio" name="status" value="1" title="发布">
@@ -37,19 +39,31 @@
 @endsection
 
 @section("js")
+
+	<!-- 配置文件 -->
+	<script type="text/javascript" src="{{ asset('vendor/ueditor/ueditor.config.js') }}"></script>
+	<!-- 编辑器源码文件 -->
+	<script type="text/javascript" src="{{ asset('vendor/ueditor/ueditor.all.js') }}"></script>
 	<script>
-        layui.config({base: '/layadmin/modul/common/'}).use(['form', 'dialog', 'his','layedit'],function(){
+        window.UEDITOR_CONFIG.serverUrl = '{{ config('ueditor.route.name') }}'
+	</script>
+	<!-- 实例化编辑器 -->
+	<script type="text/javascript">
+        var ue = UE.getEditor('container');
+        ue.ready(function() {
+            ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
+        });
+	</script>
+
+
+	<script>
+        layui.config({base: '/layadmin/modul/common/'}).use(['form', 'dialog', 'his'],function(){
             var form = layui.form,
                 dialog = layui.dialog,
                 $ = layui.jquery,
                 his = layui.his;
-            var layedit = layui.layedit;
-            layedit.build('content'); //建立编辑器
 
             form.on("submit(addarticle)",function(data){
-                if ($('.article_group:checked').length == 0) dialog.msg('请选择用户组');
-                var loadIndex = dialog.load('数据提交中，请稍候');
-
                 his.ajax({
                     url: '/admin/article'
                     ,type: 'post'

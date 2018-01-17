@@ -16,7 +16,7 @@
                     <p id="demoText"></p>
                 </div>
             </div>
-        
+
 		<div class="layui-form-item">
 			<label class="layui-form-label">排序</label>
 			<div class="layui-input-block">
