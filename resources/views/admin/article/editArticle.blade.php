@@ -12,18 +12,16 @@
 				</select>
 			</div>
 		</div>
-		<div class="layui-form-item" style="margin-top: 50px">
+		<div class="layui-form-item">
 			<label class="layui-form-label">标题</label>
 			<div class="layui-input-block">
 				<input type="text" class="layui-input" name="title" lay-verify="required" value="{{$articles['title']}}">
 			</div>
 		</div>
-		<label class="layui-form-label">内容</label>
-		<div class="layui-form-item" style="margin-top: 80px">
-
-			<!-- 编辑器容器 -->
+		<div class="layui-form-item">
+			<label class="layui-form-label">内容</label>
 			<script id="container" name="content" type="text/plain">
-				{!! $articles['content'] !!}
+				{{$articles['id']}}
 			</script>
 		</div>
 		<div class="layui-form-item">
@@ -56,16 +54,19 @@
         });
 	</script>
 
+	<!-- 编辑器容器 -->
 
 	<script>
 
-        layui.config({base: '/layadmin/modul/common/'}).use(['form', 'dialog', 'his'],function(){
+        layui.config({base: '/layadmin/modul/common/'}).use(['form', 'dialog', 'his','layedit'],function(){
             var form = layui.form,
                 dialog = layui.dialog,
                 $ = layui.jquery,
                 his = layui.his;
 
             form.on("submit(addarticle)",function(data){
+                if ($('.article_group:checked').length == 0) dialog.msg('请选择用户组');
+                var loadIndex = dialog.load('数据提交中，请稍候');
 
                 his.ajax({
                     url: '/admin/article'
