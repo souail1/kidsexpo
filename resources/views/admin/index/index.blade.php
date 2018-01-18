@@ -78,6 +78,12 @@
                         </a>
                     </li>
                     <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="/admin/cates">
+                            <i class="iconfont icon-text" data-icon="icon-text"></i>
+                            <cite>栏目管理</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
                         <a href="javascript:;" data-url="/admin/articlesList">
                             <i class="iconfont icon-text" data-icon="icon-text"></i>
                             <cite>文章列表</cite>

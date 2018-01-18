@@ -12,14 +12,15 @@
 				</select>
 			</div>
 		</div>
-		<div class="layui-form-item">
+		<div class="layui-form-item" style="margin-top: 50px">
 			<label class="layui-form-label">标题</label>
 			<div class="layui-input-block">
 				<input type="text" class="layui-input" name="title" lay-verify="required" value="{{$articles['title']}}">
 			</div>
 		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">内容</label>
+		<label class="layui-form-label">内容</label>
+		<div class="layui-form-item" style="margin-top: 50px">
+
 			<script id="container" name="content" type="text/plain">
 				{{$articles['id']}}
 			</script>
@@ -50,6 +51,7 @@
 	<script type="text/javascript">
         var ue = UE.getEditor('container');
         ue.ready(function() {
+            ue.setHeight(400);
             ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
         });
 	</script>

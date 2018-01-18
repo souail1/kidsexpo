@@ -41,7 +41,6 @@
 @endsection
 
 @section("js")
-    <script type="text/javascript" src="/layadmin/modul/banner/add.js"></script>
     <script>
         layui.use('upload', function(){
             var $ = layui.jquery,

@@ -39,7 +39,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 
 
-        /*Route::get('cates', 'CateController@Cates');
+        Route::get('cates', 'CateController@Cates');
         Route::get('cate/create', 'CateController@addCate');
         Route::post('cate', 'CateController@addCate');
         Route::get('cate/{id}/edit', 'CateController@editCate');
@@ -53,7 +53,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('rule/{id}/edit', 'RuleController@editRule');
         Route::put('rule', 'RuleController@editRule');
         Route::delete('rule', 'RuleController@deleteRule');
-        Route::patch('rule', 'RuleController@editRuleStatus');*/
+        Route::patch('rule', 'RuleController@editRuleStatus');
     });
 
 });

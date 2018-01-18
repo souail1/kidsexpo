@@ -11,6 +11,7 @@ class Article extends Model
     protected $table = 'articles';
     protected $fillable = ['id','title','cate','content','status','author'];
 
+
     public function addArticle(array $data) : bool
     {
         $has = Article::where('title', $data['title'])->count();
