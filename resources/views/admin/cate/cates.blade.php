@@ -7,10 +7,10 @@
 @section("content")
 	<blockquote class="layui-elem-quote news_search">
 		<div class="layui-inline">
-			<a class="layui-btn cateAdd_btn" style="background-color:#5FB878">添加权限</a>
+			<a class="layui-btn cateAdd_btn" style="background-color:#5FB878">添加栏目</a>
 		</div>
 		<div class="layui-inline">
-			<div class="layui-form-mid layui-word-aux">&nbsp;&nbsp;&nbsp;&nbsp;权限更改后,需要所有后台用户重新登录才会立即生效</div>
+			<div class="layui-form-mid layui-word-aux">&nbsp;&nbsp;&nbsp;&nbsp;栏目更改后,刷新页面即生效</div>
 		</div>
 	</blockquote>
 	<div class="layui-form links_list">
@@ -25,7 +25,7 @@
 			<thead>
 			<tr>
 				<th>#</th>
-				<th style="text-align:left;">权限名称</th>
+				<th style="text-align:left;">栏目名称</th>
 				<th>排序</th>
 				<th>是否显示</th>
 				<th>操作</th>
@@ -71,15 +71,15 @@
 
             $('.tree').treegrid({initialState: 'collapsed'});
 
-            //添加权限
+            //添加栏目
             $(".cateAdd_btn").click(function(){
-                dialog.open('添加权限', '/admin/cate/create');
+                dialog.open('添加栏目', '/admin/cate/create');
             })
 
-            //编辑权限
+            //编辑栏目
             $("body").on("click",".cate_edit",function(){  //编辑
                 var id = $(this).attr('data-id');
-                dialog.open('编辑权限', '/admin/cate/'+id+'/edit');
+                dialog.open('编辑栏目', '/admin/cate/'+id+'/edit');
             })
 
             $("body").on("click",".cate_del",function(){  //删除

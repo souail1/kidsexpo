@@ -71,8 +71,6 @@
                 his = layui.his;
 
             form.on("submit(addbanner)",function(data){
-                if ($('.banner_group:checked').length == 0) dialog.msg('请选择用户组');
-                var loadIndex = dialog.load('数据提交中，请稍候');
 
                 his.ajax({
                     url: '/admin/banner'

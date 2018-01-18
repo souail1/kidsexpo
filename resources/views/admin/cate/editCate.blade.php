@@ -14,9 +14,9 @@
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">权限名称</label>
+			<label class="layui-form-label">栏目名称</label>
 			<div class="layui-input-block">
-				<input type="text" class="layui-input" name="title" value="{{$cate->title}}" lay-verify="required" placeholder="请输入权限名称">
+				<input type="text" class="layui-input" name="title" value="{{$cate->title}}" lay-verify="required" placeholder="请输入栏目名称">
 			</div>
 		</div>
 		<input type="hidden" name="id" value="{{$cate->id}}">

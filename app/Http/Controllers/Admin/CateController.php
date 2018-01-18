@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CateController extends Controller
 {
     /**
-     * 权限列表页
+     * 栏目列表页
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function cates()
@@ -22,7 +22,7 @@ class CateController extends Controller
     }
 
     /**
-     * 添加权限
+     * 添加栏目
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -45,7 +45,7 @@ class CateController extends Controller
     }
 
     /**
-     * 编辑权限
+     * 编辑栏目
      * @param Request $request
      * @return array|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -75,7 +75,7 @@ class CateController extends Controller
     }
 
     /**
-     * 删除权限
+     * 删除栏目
      * @param Request $request
      * @return array
      */

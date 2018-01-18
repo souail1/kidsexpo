@@ -17,7 +17,7 @@ class Cate extends Model
     }
 
     /**
-     * 获取权限数据
+     * 获取栏目数据
      * @return array
      */
     public function getCatesSelector()
@@ -30,7 +30,7 @@ class Cate extends Model
     }
 
     /**
-     * 获取所有权限
+     * 获取所有栏目
      * @param string $field
      * @return array
      */
