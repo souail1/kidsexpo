@@ -13,7 +13,7 @@ class Cate extends Model
 
     public function article()
     {
-        return $this->hasMany('App\Model\Article', 'cate');
+        return $this->hasMany('App\Model\Article', 'cate', 'id');
     }
 
     /**
@@ -104,7 +104,6 @@ class Cate extends Model
         return true;
 
     }
-
 
 
 }

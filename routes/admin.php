@@ -27,6 +27,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::put('article', 'ArticleController@editArticle');
         Route::patch('article', 'ArticleController@activeArticle');
         Route::delete('article', 'ArticleController@delArticle');
+        Route::get('singlesList', 'ArticleController@singlesPage');
+        Route::get('singles', 'ArticleController@getSingles');
         //banner
         Route::get('bannersList', 'BannerController@bannersPage');
         Route::get('banners', 'BannerController@getBanners');
@@ -35,10 +37,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('banner/{id}/edit', 'BannerController@editBanner');
         Route::put('banner', 'BannerController@editBanner');
         Route::delete('banner', 'BannerController@delBanner');
-
-
-
-
+        //cate
         Route::get('cates', 'CateController@Cates');
         Route::get('cate/create', 'CateController@addCate');
         Route::post('cate', 'CateController@addCate');
@@ -46,6 +45,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::put('cate', 'CateController@editCate');
         Route::delete('cate', 'CateController@deleteCate');
         Route::patch('cate', 'CateController@editCateStatus');
+
+
 
         Route::get('rules', 'RuleController@rules');
         Route::get('rule/create', 'RuleController@addRule');

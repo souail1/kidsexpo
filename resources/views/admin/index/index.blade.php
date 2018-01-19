@@ -96,6 +96,12 @@
                         </a>
                     </li>
                     <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="/admin/singlesList">
+                            <i class="layui-icon" data-icon=""></i>
+                            <cite>单页管理</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
                         <a href="javascript:;">
                             <i class="layui-icon" data-icon=""></i>
                             <cite>组件管理</cite>

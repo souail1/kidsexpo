@@ -30,7 +30,7 @@ class ArticleController extends Controller
         $offset = ($page - 1) * $limit;
         if ($where) $where = [['title', 'like', $where.'%']];
         $articles = DB::table('articles')
-            ->select('id', 'title', 'content', 'cate', 'created_at', 'updated_at','status')
+            ->select('id', 'title', 'content', 'created_at', 'updated_at','status')
             ->where($where)
             ->offset($offset)
             ->limit($limit)
@@ -93,4 +93,25 @@ class ArticleController extends Controller
         return ajaxSuccess();
     }
 
+    /**
+     * 单页面
+     */
+    public function singlesPage()
+    {
+        return view('admin.article.single');
+    }
+    //获取文章数据
+    public function getSingles()
+    {
+        $articles = DB::table('articles')
+            ->select('id', 'title', 'status')
+            ->where('type', 2)
+            ->get()->toArray();
+        $count = DB::table('articles')->count();
+        $res= [
+            'count' => $count,
+            'data' => $articles
+        ];
+        return ajaxSuccess($res['data'], $res['count']);
+    }
 }

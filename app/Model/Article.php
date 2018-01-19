@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\DB;
 class Article extends Model
 {
     protected $table = 'articles';
-    protected $fillable = ['id','title','cate','content','status','author'];
+    protected $fillable = ['id','title','cate', 'type','content','status','author'];
+
+    public function cate()
+    {
+        return $this->belongsTo('App\Model\Cate', 'cate', 'id');
+    }
 
 
     public function addArticle(array $data) : bool
@@ -58,5 +63,20 @@ class Article extends Model
         return true;
 
     }
+
+    //µ¥Ò³¹ÜÀí
+    public function getSinglePage()
+    {
+        $articles = Article::where('type', 2)
+            ->select('id', 'title')
+            ->get();
+        $res = array();
+        foreach($articles as $v)
+        {
+            $res[$v['id']]=$v['title'];
+        }
+        return $res;
+    }
+
 
 }
