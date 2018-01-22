@@ -51,7 +51,7 @@ class Article extends Model
         $save = [
             'title' => $param['title'],
             'cate' => $param['cate'],
-            //'content' => $param['content'],
+            'content' => $param['content'],
             'status' => $param['status'],
         ];
         $res = Article::where('id', $param['id'])->update($save);
