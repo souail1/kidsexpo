@@ -41,11 +41,17 @@
                     });
                     tpwidget("show");</script>
             </div>
+
             <!-- 顶部右侧login out菜单 -->
             <ul class="layui-nav top_menu">
                 {{--<li class="layui-nav-item showNotice" id="showNotice" pc>--}}
                     {{--<a href="javascript:;"><i class="layui-icon"></i><cite>系统公告</cite></a>--}}
                 {{--</li>--}}
+                @foreach (Config::get('app.locales') as $lang => $language)
+                    @if ($lang != App::getLocale())
+                        <li class="layui-nav-item"><a href="{{ route('lang.change', $lang) }}">{{$language}}</a></li>
+                    @endif
+                @endforeach
                 <li class="layui-nav-item" pc>
                     <a href="javascript:;">
                         <img src="/layadmin/modul/index/face.jpg" class="layui-circle" width="35" height="35">

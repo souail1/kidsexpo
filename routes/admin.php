@@ -3,6 +3,8 @@
 //upload
 Route::post('upload', 'UploadController@upload');
 
+Route::get('lang/{locale}', ['as'=>'lang.change', 'uses'=>'LanguageController@setLocale']);
+
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('login', 'LoginController@index');
     Route::post('login', 'LoginController@signIn');
@@ -55,6 +57,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::put('rule', 'RuleController@editRule');
         Route::delete('rule', 'RuleController@deleteRule');
         Route::patch('rule', 'RuleController@editRuleStatus');
+
+
+
     });
 
 });

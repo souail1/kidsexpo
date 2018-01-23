@@ -65,6 +65,11 @@
         </style>
     </head>
     <body>
+    @foreach (Config::get('app.locales') as $lang => $language)
+        @if ($lang != App::getLocale())
+            <li class="layui-nav-item"><a href="{{ route('lang.change', $lang) }}">{{$language}}</a></li>
+        @endif
+    @endforeach
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -76,10 +81,9 @@
                     @endauth
                 </div>
             @endif
-
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    {{ trans('welcome.message') }}
                 </div>
 
                 <div class="links">

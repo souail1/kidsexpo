@@ -11,6 +11,7 @@
 |
 */
 require 'admin.php';
+Route::get('lang/{locale}', ['as'=>'lang.change', 'uses'=>'LanguageController@setLocale']);
 
 Route::get('/', function () {
     return view('welcome');
