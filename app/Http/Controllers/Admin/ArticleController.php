@@ -24,14 +24,21 @@ class ArticleController extends Controller
     //获取文章数据
     public function getArticles(Request $request)
     {
+        $language = session('applocale');
+        if ($language == 'en'){
+            $lang = 2;
+        }else{
+            $lang = 1;
+        }
         $page =  $request->input('page');
         $limit =  $request->input('limit');
         $where = $request->input('cond') ?? [];
         $offset = ($page - 1) * $limit;
         if ($where) $where = [['title', 'like', $where.'%']];
         $articles = DB::table('articles')
-            ->select('id', 'title', 'content', 'created_at', 'updated_at','status')
+            ->select('id', 'title', 'cate','content', 'created_at', 'updated_at','status')
             ->where($where)
+            ->where('language', '=', $lang)
             ->offset($offset)
             ->limit($limit)
             ->get()->toArray();
@@ -54,7 +61,13 @@ class ArticleController extends Controller
             if (!$re) return ajaxError($Article->getError(), $Article->getHttpCode());
             return ajaxSuccess([], '', 'success', HttpCode::CREATED);
         } else {
-            return view('admin.article.addArticle');
+            $language = session('applocale');
+            if ($language == 'en'){
+                $lang = 2;
+            }else{
+                $lang = 1;
+            }
+            return view('admin.article.addArticle',['lang' => $lang]);
         }
     }
 

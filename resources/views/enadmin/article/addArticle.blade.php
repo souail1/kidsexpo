@@ -30,7 +30,9 @@
 			<input type="radio" name="status" value="-1" title="暂不发布">
 		</div>
 
-		<input type="hidden" name="language" value="{{ $lang }}">
+		@if ( Session::get('applocale')  == 'en')
+
+		@endif
 
 
 		<div class="layui-form-item">
