@@ -80,14 +80,11 @@
 //				,skin: 'row' // 'line', 'row', 'nob'
                 ,even: false //开启隔行背景
 //                ,size: 'lg' // 'sm', 'lg'
-
             });
-
             table.on('tool(articletab)', function(obj){
                 var data = obj.data;      //获得当前行数据
                 var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
                 var tr = obj.tr;          //获得当前行 tr 的DOM对象
-
                 if (layEvent == 'active') {
                     dialog.confirm('确认进行此操作', function () {
                         var loadIndex = dialog.load('修改中，请稍候');
@@ -112,7 +109,6 @@
                     });
                 } else if (layEvent == 'edit') {
                     dialog.open('编辑文章', '/admin/article/'+data.id+'/edit');
-
                 } else if (layEvent == 'del') {
                     dialog.confirm('确认删除', function () {
                         var loadIndex = dialog.load('删除中，请稍候');
@@ -132,11 +128,8 @@
                             }
                         });
                     })
-
                 }
-
             });
-
             function flushTable (cond, sortObj) {
                 var query = {
                     where: {
@@ -153,27 +146,20 @@
                 }
                 table.reload('articles', query);
             }
-
             // 搜索
             $('.search_btn').click(function () {
                 var cond = $('.search_input').val();
                 flushTable(cond);
             });
-
             // 排序
             table.on('sort(articletab)', function (obj) {
                 var cond = $('.search_input').val();
                 flushTable(cond, obj);
             });
-
             // 添加文章
             $('.add_btn').click(function () {
                 dialog.open('添加文章', '/admin/article/create');
             });
-
         });
     </script>
 @endsection
-
-
-
