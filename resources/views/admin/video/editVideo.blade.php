@@ -6,7 +6,7 @@
             <label class="layui-form-label">标题</label>
             <div class="layui-input-block">
                 <input type="text" name="title" lay-verify="required" autocomplete="off" class="layui-input"
-                       maxlength="50" value="{{$banners['title']}}">
+                       maxlength="50" value="{{$videos['title']}}">
             </div>
         </div>
         <div class="layui-form-item">
@@ -15,11 +15,11 @@
                 <i class="layui-icon">&#xe67c;</i>上传图片
             </button>
             <div class="layui-inline" style="width:300px;">
-                <input type="hidden" name="img" value="{{$banners['img']}}">
+                <input type="hidden" name="img" value="{{$videos['img']}}">
             </div>
             <div id="review" style="margin-left:110px;">
                 <notempty name="img">
-                    <img src="http://kidsexpo.cc/{{$banners['img']}}" width="100px">
+                    <img src="http://kidsexpo.cc/{{$videos['img']}}" width="100px">
                 </notempty>
             </div>
         </div>
@@ -27,13 +27,13 @@
             <label class="layui-form-label">排序</label>
             <div class="layui-input-block">
                 <input type="text" name="sort" lay-verify="required|number" autocomplete="off" class="layui-input"
-                       maxlength="8" value="{{$banners['sort']}}">
+                       maxlength="8" value="{{$videos['sort']}}">
             </div>
         </div>
-        <input type="hidden" name="id" value="{{$banners['id']}}">
+        <input type="hidden" name="id" value="{{$videos['id']}}">
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" type="button" lay-submit lay-filter="addbanner">立即提交</button>
+                <button class="layui-btn" type="button" lay-submit lay-filter="addvideo">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
@@ -83,10 +83,10 @@
                 $ = layui.jquery,
                 his = layui.his;
 
-            form.on("submit(addbanner)",function(data){
+            form.on("submit(addvideo)",function(data){
 
                 his.ajax({
-                    url: '/admin/banner'
+                    url: '/admin/video'
                     ,type: 'put'
                     ,data: data.field
                     ,contentType: 'form'

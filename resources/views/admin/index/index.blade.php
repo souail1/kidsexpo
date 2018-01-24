@@ -96,6 +96,12 @@
                         </a>
                     </li>
                     <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="/admin/videosList">
+                            <i class="layui-icon" data-icon=""></i>
+                            <cite>视频管理</cite>
+                        </a>
+                    </li>
+                    <li class="layui-nav-item">
                         <a href="javascript:;" data-url="">
                             <i class="layui-icon" data-icon=""></i>
                             <cite>幼儿园管理</cite>

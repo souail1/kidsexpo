@@ -1,7 +1,8 @@
 <?php
 
 //upload
-Route::post('upload', 'UploadController@upload');
+Route::post('upload/image', 'UploadController@image');
+Route::post('upload/file', 'UploadController@file');
 
 Route::get('lang/{locale}', ['as'=>'lang.change', 'uses'=>'LanguageController@setLocale']);
 
@@ -31,8 +32,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::delete('article', 'ArticleController@delArticle');
         Route::get('singlesList', 'ArticleController@singlesPage');
         Route::get('singles', 'ArticleController@getSingles');
-        //banner
-        Route::get('bannersList', 'BannerController@bannersPage');
+        //Banner
+        Route::get('bannersList', 'BannerController@BannersPage');
         Route::get('banners', 'BannerController@getBanners');
         Route::get('banner/create', 'BannerController@addBanner');
         Route::post('banner', 'BannerController@addBanner');
@@ -47,6 +48,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::put('cate', 'CateController@editCate');
         Route::delete('cate', 'CateController@deleteCate');
         Route::patch('cate', 'CateController@editCateStatus');
+        //video
+        Route::get('videosList', 'VideoController@VideosPage');
+        Route::get('videos', 'VideoController@getVideos');
+        Route::get('video/create', 'VideoController@addVideo');
+        Route::post('video', 'VideoController@addVideo');
+        Route::get('video/{id}/edit', 'VideoController@editVideo');
+        Route::put('videor', 'VideoController@editVideo');
+        Route::delete('video', 'VideoController@delVideo');
 
 
 

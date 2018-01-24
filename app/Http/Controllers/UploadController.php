@@ -7,22 +7,38 @@ use Illuminate\Support\Facades\Storage;
 
 class UploadController extends Controller {
 
-    public function upload(Request $request) {
+    public function image(Request $request) {
 
         if ($request->isMethod('post')) {
             $file = $request->file('file');
-            // 文件是否上传成功
             if ($file) {
-                // 获取文件相关信息
-                $originalName = $file->getClientOriginalName(); // 文件原名
-                $ext = $file->getClientOriginalExtension();     // 扩展名
-                $realPath = $file->getRealPath();   //临时文件的绝对路径
-                $type = $file->getClientMimeType();     // image/jpeg
-                // 上传文件
-                $filename = date('Y-m-d-H-i-s') . '-' . uniqid() . '.' . $ext;
-                // 使用我们新建的uploads本地存储空间（目录）
-                Storage::disk('uploads')->put($filename, file_get_contents($realPath));
-                $name = 'uploads/banners/'. $filename;
+                $originalName = $file->getClientOriginalName();
+                $ext = $file->getClientOriginalExtension();
+                $realPath = $file->getRealPath();
+                $type = $file->getClientMimeType();
+                $filename = date('Y-m-d-H-i') . '-' . uniqid() . '.' . $ext;
+                Storage::disk('image')->put($filename, file_get_contents($realPath));
+                $name = 'uploads/image/'. $filename;
+                $res = [
+                    'file' => $name
+                ];
+                $res = json_encode($res);
+                return $res;
+            }
+        }
+    }
+    public function file(Request $request) {
+
+        if ($request->isMethod('post')) {
+            $file = $request->file('file');
+            if ($file) {
+                $originalName = $file->getClientOriginalName();
+                $ext = $file->getClientOriginalExtension();
+                $realPath = $file->getRealPath();
+                $type = $file->getClientMimeType();
+                $filename = date('Y-m-d-H-i') . '-' . uniqid() . '.' . $ext;
+                Storage::disk('video')->put($filename, file_get_contents($realPath));
+                $name = 'uploads/videos/'. $filename;
                 $res = [
                     'file' => $name
                 ];
