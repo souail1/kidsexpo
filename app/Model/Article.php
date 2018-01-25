@@ -25,14 +25,7 @@ class Article extends Model
             $this->httpCode = HttpCode::CONFLICT;
             return false;
         }
-        $language = session('applocale');
-        if ($language == 'en'){
-            $data['language'] = 2;
-        }else{
-            $data['language'] = 1;
-        }
         DB::beginTransaction();
-
         $article = Article::create($data);
         if (!$article) {
             $this->error = 'Ìí¼ÓÊ§°Ü';

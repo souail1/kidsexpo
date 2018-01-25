@@ -22,7 +22,7 @@
 		<div class="layui-form-item" style="margin-top: 50px">
 
 			<script id="container" name="content" type="text/plain">
-				{{$articles['id']}}
+				{!! $articles['content'] !!}.
 			</script>
 		</div>
 		<div class="layui-form-item">

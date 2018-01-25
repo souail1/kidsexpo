@@ -24,8 +24,8 @@ class ArticleController extends Controller
     //获取文章数据
     public function getArticles(Request $request)
     {
-        $language = session('applocale');
-        if ($language == 'en'){
+        $lang = session('applocale');
+        if ($lang == 'en'){
             $lang = 2;
         }else{
             $lang = 1;
@@ -38,11 +38,15 @@ class ArticleController extends Controller
         $articles = DB::table('articles')
             ->select('id', 'title', 'cate','content', 'created_at', 'updated_at','status')
             ->where($where)
-            ->where('language', '=', $lang)
+            ->where('type', '=', $lang)
             ->offset($offset)
             ->limit($limit)
             ->get()->toArray();
-        $count = DB::table('articles')->count();
+
+        $count = DB::table('articles')
+            ->where($where)
+            ->where('type', '=', $lang)
+            ->count();
         $res= [
             'count' => $count,
             'data' => $articles
@@ -56,13 +60,13 @@ class ArticleController extends Controller
             $this->validate($request, [
                 'title' => 'required',
             ]);
-            $Article = new Article();
-            $re = $Article->addArticle($request->all());
-            if (!$re) return ajaxError($Article->getError(), $Article->getHttpCode());
+            $data = $request->all();
+            $re = Article::create($data);
+            if (!$re) return ajaxError('failed');
             return ajaxSuccess([], '', 'success', HttpCode::CREATED);
         } else {
-            $language = session('applocale');
-            if ($language == 'en'){
+            $lang = session('applocale');
+            if ($lang == 'en'){
                 $lang = 2;
             }else{
                 $lang = 1;

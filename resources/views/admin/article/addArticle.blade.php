@@ -30,7 +30,11 @@
 			<input type="radio" name="status" value="-1" title="暂不发布">
 		</div>
 
-		<input type="hidden" name="language" value="{{ $lang }}">
+		<div class="layui-form-item">
+			<!-- 提交session中的locale -->
+			<input type="hidden" name="type" value="{{ $lang }}">
+		</div>
+
 
 
 		<div class="layui-form-item">
@@ -75,7 +79,7 @@
                     ,data: data.field
                     ,contentType: 'form'
                     ,complete: function(){
-                        dialog.close(loadIndex);
+
                     }
                     ,error: function (msg) {
                         dialog.error(msg);
