@@ -16,3 +16,7 @@ Route::get('lang/{locale}', ['as'=>'lang.change', 'uses'=>'LanguageController@se
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['namespace' => 'Index'], function () {
+    Route::get('test', 'TestController@test');
+    Route::post('test/post', 'TestController@testPost');
+});
