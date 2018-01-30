@@ -50,8 +50,10 @@ class TestController extends Controller
         // 表示一分钟后执行任务
         $id = $request->input('id');
         $test = Test::findOrFail($id);
-        $job = (new InsertJob($test))->delay(600);
+        $job = (new InsertJob($test))->delay(60);
         $this->dispatch($job);
     }
+
+
 
 }

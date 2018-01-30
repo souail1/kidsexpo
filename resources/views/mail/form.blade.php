@@ -1,3 +1,1 @@
-<div>
-    Name: {{ $test->name }}
-</div>
+{{$name}}，这是一封测试邮件
