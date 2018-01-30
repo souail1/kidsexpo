@@ -19,4 +19,7 @@ Route::get('/', function () {
 Route::group(['namespace' => 'Index'], function () {
     Route::get('test', 'TestController@test');
     Route::post('test/post', 'TestController@testPost');
+    Route::get('test/show', 'TestController@show');
+    Route::get('test_job', 'TestController@testJob');
 });
+Route::get('mail/send','MailController@send');
