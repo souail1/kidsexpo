@@ -9,8 +9,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Log;
 use App\Model\Test;
+use Illuminate\Contracts\Mail\Mailer;
 
-class insertJob implements ShouldQueue
+class TestJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -30,10 +31,11 @@ class insertJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(Mailer $mailer)
     {
         $test = $this->test;
-        $name = $test->name;
-        Log::info('¶ÓÁÐ²âÊÔ'.$name);
+        $mailer->send('mail.form',['test'=>$test],function($message) use ($test){
+            $message->to($test->email)->subject('é‚®ä»¶æµ‹è¯•');
+        });
     }
 }

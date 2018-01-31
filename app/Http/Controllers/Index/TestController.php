@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Model\Test;
 use Illuminate\Support\Facades\Mail;
-use App\Jobs\InsertJob;
+use App\Jobs\TestJob;
 
 
 
@@ -26,7 +26,7 @@ class TestController extends Controller
         $name = $request->input('name');
         $test->name = $name;
         $test -> save();
-        //´¥·¢ÊÂ¼þ
+        //è§¦å‘äº‹ä»¶
         event(new TestEvent($test));
         if(!$test){
             return('fail');
@@ -40,17 +40,20 @@ class TestController extends Controller
     {
         $id = $request->input('id');
         $test = Test::findOrFail($id);
-        //·¢ËÍÓÊ¼þ
+        //å‘é€é‚®ä»¶
         Mail::to('706899061@qq.com')->send(new TestMail($test));
         return view('index.test.show', ['test' => $test]);
     }
-    //²âÊÔÈÎÎñ¶ÓÁÐ
+    //æµ‹è¯•ä»»åŠ¡é˜Ÿåˆ—
     public function testJob(Request $request)
     {
-        // ±íÊ¾Ò»·ÖÖÓºóÖ´ÐÐÈÎÎñ
+        // è¡¨ç¤ºä¸€åˆ†é’ŸåŽæ‰§è¡Œä»»åŠ¡
         $id = $request->input('id');
         $test = Test::findOrFail($id);
-        $job = (new InsertJob($test))->delay(60);
+        /*$job = (new TestJob($test))->delay(60);
+        $this->dispatch($job);*/
+        $job = (new TestJob($test))->delay(60 * 5);
+
         $this->dispatch($job);
     }
 
